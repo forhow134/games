@@ -24,15 +24,27 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Build
-        working-directory: 03-space-shooter
+      - name: Install and Build all games
         run: |
-          npm ci
-          npx vite build
+          for game in 01-island-treasure 02-whack-a-mole 03-space-shooter 04-tower-defense; do
+            echo "Building $game..."
+            cd $game
+            npm ci
+            npx vite build
+            cd ..
+          done
+
+      - name: Prepare artifact structure
+        run: |
+          mkdir -p _site
+          for game in 01-island-treasure 02-whack-a-mole 03-space-shooter 04-tower-defense; do
+            short_name=$(echo $game | cut -d'-' -f2)
+            cp -r $game/dist _site/$short_name
+          done
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: 03-space-shooter/dist
+          path: _site
 
   deploy:
     needs: build
