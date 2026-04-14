@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Sorcerer</title>
+  <script type="module" crossorigin src="./assets/index-CY_MCVEg.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Ciu31GUY.css">
+</head>
+<body>
+  <div id="ui">
+    <div id="hud" class="hidden">
+      <div id="hud-top">
+        <div id="hud-left">
+          <span id="score-display">Score: 0</span>
+          <span id="combo-display" class="hidden"></span>
+        </div>
+        <div id="hud-center">
+          <span id="level-label"></span>
+        </div>
+        <div id="hud-right">
+          <div id="hp-display"></div>
+          <span id="powerup-indicator" class="hidden"></span>
+        </div>
+      </div>
+      <div id="boss-bar-container" class="hidden">
+        <span id="boss-name"></span>
+        <div id="boss-bar-bg"><div id="boss-bar-fill"></div></div>
+      </div>
+      <div id="float-score-container"></div>
+    </div>
+
+    <div id="level-title" class="hidden">
+      <h1 id="level-title-text"></h1>
+      <p id="level-subtitle"></p>
+    </div>
+
+    <div id="level-complete" class="hidden">
+      <h1>Level Complete!</h1>
+      <div id="score-breakdown"></div>
+      <p id="level-total-score"></p>
+      <button id="next-level-btn">Next Level</button>
+    </div>
+
+    <div id="victory" class="hidden">
+      <h1>Victory!</h1>
+      <p>The shadows have been vanquished!</p>
+      <p id="victory-score"></p>
+      <button id="victory-restart">Play Again</button>
+    </div>
+
+    <div id="game-over" class="hidden">
+      <h1>Defeated!</h1>
+      <p>The shadows consumed you...</p>
+      <p id="game-over-score"></p>
+      <button id="game-over-retry">Retry Level</button>
+      <button id="game-over-restart">Restart</button>
+    </div>
+
+    <div id="start-screen">
+      <h1>Star Sorcerer</h1>
+      <p>Move mouse to pilot your ship<br/>Auto-fire magic bolts | Hold Shift for charged shot<br/>Defeat the shadow forces!</p>
+      <button id="start-btn">Start</button>
+    </div>
+  </div>
+</body>
+</html>

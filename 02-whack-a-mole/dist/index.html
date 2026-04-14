@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whack-a-Mole 3D</title>
+  <script type="module" crossorigin src="./assets/index-ClHFmdb1.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CqtgsfAW.css">
+</head>
+<body>
+  <div id="ui">
+    <div id="hud" class="hidden">
+      <div id="hud-top">
+        <div id="hud-left">
+          <span id="score-display">Score: 0</span>
+        </div>
+        <div id="hud-center">
+          <span id="level-label"></span>
+          <span id="hit-count"></span>
+        </div>
+        <div id="hud-right">
+          <span id="timer"></span>
+        </div>
+      </div>
+      <div id="combo-display" class="hidden"></div>
+      <div id="float-score-container"></div>
+    </div>
+
+    <div id="level-title" class="hidden">
+      <h1 id="level-title-text"></h1>
+    </div>
+
+    <div id="level-complete" class="hidden">
+      <h1>Level Complete!</h1>
+      <div id="score-breakdown"></div>
+      <p id="level-total-score"></p>
+      <button id="next-level-btn">Next Level</button>
+    </div>
+
+    <div id="victory" class="hidden">
+      <h1>Champion!</h1>
+      <p>You whacked them all!</p>
+      <p id="victory-score"></p>
+      <button id="victory-restart">Play Again</button>
+    </div>
+
+    <div id="game-over" class="hidden">
+      <h1>Level Failed!</h1>
+      <p>Not enough moles whacked!</p>
+      <p id="game-over-score"></p>
+      <button id="game-over-retry">Retry Level</button>
+      <button id="game-over-restart" style="margin-left:12px;background:linear-gradient(145deg,#ff5a8a,#c43a6a);" onclick="document.getElementById('game-over').classList.add('hidden');document.getElementById('start-screen').classList.remove('hidden');">Restart</button>
+    </div>
+
+    <div id="start-screen">
+      <h1>Whack-a-Mole 3D</h1>
+      <p>Click to whack moles! Drag to rotate view<br/>Golden = bonus | Bombs = danger!</p>
+      <button id="start-btn">Start</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <style>
+    #test-btn { padding: 20px; font-size: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <button id="test-btn">Click Me</button>
+  <div id="result"></div>
+  <script type="module">
+    document.getElementById('test-btn').addEventListener('click', () => {
+      document.getElementById('result').textContent = 'Clicked!';
+    });
+  </script>
+</body>
+</html>

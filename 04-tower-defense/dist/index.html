@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Forest TD - Tower Defense Game</title>
+  <script type="module" crossorigin src="./assets/index-Bj_KnPYw.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BntIF-hE.css">
+</head>
+<body>
+  <div id="ui">
+    <!-- Language Switch -->
+    <div id="lang-switch">
+      <button data-lang="en" class="lang-btn">EN</button>
+      <button data-lang="zh" class="lang-btn">中文</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div id="hud-top">
+        <div id="hud-left">
+          <div id="gold-display">💰 100</div>
+          <div id="base-hp">❤️ 20/20</div>
+        </div>
+        <div id="hud-center">
+          <div id="wave-info" data-i18n-html="game.wave">Wave 1 / 15</div>
+          <div id="wave-name" data-i18n="waves.wave1">Goblin Raid</div>
+        </div>
+        <div id="hud-right">
+          <div id="enemies-remaining"><span data-i18n="common.enemies">Enemies</span>: 0</div>
+          <div id="camera-controls">
+            <button class="cam-btn active" data-view="default" title="ISO View (Key: 2)" data-i18n="camera.default">ISO</button>
+            <button class="cam-btn" data-view="top" title="Top View (Key: 1)" data-i18n="camera.top">Top</button>
+            <button class="cam-btn" data-view="low" title="Low View (Key: 3)" data-i18n="camera.low">Low</button>
+          </div>
+          <button id="start-wave-btn" class="hud-btn" data-i18n="game.startWave">Start Wave</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tower Selection Panel -->
+    <div id="tower-panel" class="hidden">
+      <div class="panel-title" data-i18n="towerPanel.title">Select Tower</div>
+      <div id="tower-list">
+        <div class="tower-card" data-type="arrow">
+          <div class="tower-icon" style="background: linear-gradient(135deg, #8B4513, #A0522D);">🏹</div>
+          <div class="tower-info">
+            <div class="tower-name" data-i18n="towers.arrow.name">Arrow Tower</div>
+            <div class="tower-cost">💰 30</div>
+            <div class="tower-desc" data-i18n="towers.arrow.desc">Fast attack, single target</div>
+          </div>
+        </div>
+        <div class="tower-card" data-type="magic">
+          <div class="tower-icon" style="background: linear-gradient(135deg, #9932CC, #BA55D3);">🔮</div>
+          <div class="tower-info">
+            <div class="tower-name" data-i18n="towers.magic.name">Magic Tower</div>
+            <div class="tower-cost">💰 50</div>
+            <div class="tower-desc" data-i18n="towers.magic.desc">Long range, high damage</div>
+          </div>
+        </div>
+        <div class="tower-card" data-type="cannon">
+          <div class="tower-icon" style="background: linear-gradient(135deg, #696969, #808080);">💣</div>
+          <div class="tower-info">
+            <div class="tower-name" data-i18n="towers.cannon.name">Cannon Tower</div>
+            <div class="tower-cost">💰 80</div>
+            <div class="tower-desc" data-i18n="towers.cannon.desc">Splash damage</div>
+          </div>
+        </div>
+        <div class="tower-card" data-type="ice">
+          <div class="tower-icon" style="background: linear-gradient(135deg, #00CED1, #48D1CC);">❄️</div>
+          <div class="tower-info">
+            <div class="tower-name" data-i18n="towers.ice.name">Ice Tower</div>
+            <div class="tower-cost">💰 60</div>
+            <div class="tower-desc" data-i18n="towers.ice.desc">Slows enemies</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-hint" data-i18n="towerPanel.hint">Click on empty ground to build</div>
+    </div>
+
+    <!-- Selected Tower Info -->
+    <div id="tower-info-panel" class="hidden">
+      <div class="panel-title" data-i18n="towerInfo.title">Tower Info</div>
+      <div id="selected-tower-details"></div>
+      <button id="upgrade-tower-btn" class="hidden" data-i18n="common.upgrade">Upgrade</button>
+      <button id="sell-tower-btn" data-i18n="common.sell">Sell</button>
+      <button id="close-info-btn" data-i18n="common.close">Close</button>
+    </div>
+
+    <!-- Wave Title -->
+    <div id="wave-title" class="hidden">
+      <h1 id="wave-title-text"></h1>
+      <p id="wave-subtitle"></p>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory" class="hidden">
+      <h1 data-i18n="game.victory">Victory!</h1>
+      <p data-i18n="game.victoryDesc">You defended the Magic Forest!</p>
+      <p id="victory-score"></p>
+      <button id="victory-restart" data-i18n="common.restart">Play Again</button>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over" class="hidden">
+      <h1 data-i18n="game.gameOver">Game Over</h1>
+      <p data-i18n="game.gameOverDesc">The temple was breached...</p>
+      <p id="game-over-score"></p>
+      <button id="game-over-retry" data-i18n="common.retry">Retry</button>
+      <button id="game-over-restart" data-i18n="common.backToMenu">Main Menu</button>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="start-screen">
+      <h1>🌲 <span data-i18n="startScreen.title">Magic Forest TD</span></h1>
+      <p class="subtitle" data-i18n="startScreen.subtitle">Tower Defense</p>
+      <p class="description" data-i18n="startScreen.description">Defend the temple against the goblin army!\nBuild towers on empty ground, defeat enemies to earn gold</p>
+      <div class="controls">
+        <div>🖱️ <span data-i18n="startScreen.controls.leftClick">Left Click: Build/Select Tower</span></div>
+        <div>🖱️ <span data-i18n="startScreen.controls.rightClick">Right Click: Rotate View</span></div>
+        <div>🖱️ <span data-i18n="startScreen.controls.scroll">Scroll: Zoom</span></div>
+      </div>
+      <button id="start-btn" data-i18n="startScreen.startBtn">Start Game</button>
+    </div>
+
+    <!-- Difficulty Selection -->
+    <div id="difficulty-screen" class="hidden">
+      <h1>⚔️ <span data-i18n="difficulty.title">Select Difficulty</span></h1>
+      <p class="subtitle" data-i18n="difficulty.subtitle">Difficulty affects enemy stats and gold rewards</p>
+      <div id="difficulty-list">
+        <div class="difficulty-card" data-difficulty="easy">
+          <div class="diff-icon">🌱</div>
+          <div class="diff-name" data-i18n="difficulty.easy.name">Easy</div>
+          <div class="diff-desc" data-i18n="difficulty.easy.desc">Weakened enemies, bonus gold</div>
+        </div>
+        <div class="difficulty-card selected" data-difficulty="normal">
+          <div class="diff-icon">⚔️</div>
+          <div class="diff-name" data-i18n="difficulty.normal.name">Normal</div>
+          <div class="diff-desc" data-i18n="difficulty.normal.desc">Standard difficulty</div>
+        </div>
+        <div class="difficulty-card" data-difficulty="hard">
+          <div class="diff-icon">🔥</div>
+          <div class="diff-name" data-i18n="difficulty.hard.name">Hard</div>
+          <div class="diff-desc" data-i18n="difficulty.hard.desc">Stronger enemies, faster movement</div>
+        </div>
+        <div class="difficulty-card" data-difficulty="nightmare">
+          <div class="diff-icon">💀</div>
+          <div class="diff-name" data-i18n="difficulty.nightmare.name">Nightmare</div>
+          <div class="diff-desc" data-i18n="difficulty.nightmare.desc">Extreme challenge</div>
+        </div>
+      </div>
+      <button id="difficulty-start-btn" class="hud-btn" data-i18n="difficulty.startBtn">Start Challenge</button>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorial-overlay" class="hidden">
+      <div id="tutorial-box">
+        <div id="tutorial-step-text"></div>
+        <div id="tutorial-hint"></div>
+        <button id="tutorial-next-btn" data-i18n="tutorial.nextBtn">Next</button>
+        <button id="tutorial-skip-btn" data-i18n="tutorial.skipBtn">Skip Tutorial</button>
+      </div>
+    </div>
+
+    <!-- Skill Card Panel -->
+    <div id="skill-card-panel" class="hidden">
+      <div class="panel-title" data-i18n="skillCards.title">Select Skill Card</div>
+      <div id="skill-card-list"></div>
+      <button id="skill-card-skip-btn" class="hud-btn" data-i18n="skillCards.skipBtn">Skip (No skill this wave)</button>
+    </div>
+
+    <!-- Wave Complete Modal -->
+    <div id="wave-complete-modal" class="hidden">
+      <div class="modal-content">
+        <div class="modal-icon">🌟</div>
+        <div class="modal-title" id="modal-wave-name">Wave 3 Complete!</div>
+        <div class="modal-stats">
+          <div class="stat-row">
+            <span data-i18n="waveComplete.survived">Survived</span>
+            <span id="modal-hp">18/20 HP</span>
+          </div>
+          <div class="stat-row">
+            <span data-i18n="waveComplete.goldCollected">Gold</span>
+            <span id="modal-gold">350</span>
+          </div>
+          <div class="stat-row">
+            <span data-i18n="waveComplete.nextWave">Next Wave</span>
+            <span id="modal-next-wave">Forest Boss</span>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button id="modal-continue-btn" class="hud-btn" data-i18n="waveComplete.continueBtn">Continue</button>
+          <button id="modal-menu-btn" class="hud-btn" data-i18n="waveComplete.menuBtn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Float Text Container -->
+    <div id="float-text-container"></div>
+  </div>
+
+</body>
+</html>

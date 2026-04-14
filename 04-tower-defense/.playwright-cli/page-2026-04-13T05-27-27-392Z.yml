@@ -1,0 +1,26 @@
+- generic [active]:
+  - generic:
+    - generic [ref=e2]:
+      - button "EN" [ref=e3] [cursor=pointer]
+      - button "中文" [ref=e4] [cursor=pointer]
+    - generic [ref=e14]:
+      - heading "⚔️ Select Difficulty" [level=1] [ref=e15]
+      - paragraph [ref=e16]: Difficulty affects enemy stats and gold rewards
+      - generic [ref=e17]:
+        - generic [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 🌱
+          - generic [ref=e20]: Easy
+          - generic [ref=e21]: Weakened enemies, bonus gold
+        - generic [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: ⚔️
+          - generic [ref=e24]: Normal
+          - generic [ref=e25]: Standard difficulty
+        - generic [ref=e26] [cursor=pointer]:
+          - generic [ref=e27]: 🔥
+          - generic [ref=e28]: Hard
+          - generic [ref=e29]: Stronger enemies, faster movement
+        - generic [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]: 💀
+          - generic [ref=e32]: Nightmare
+          - generic [ref=e33]: Extreme challenge
+      - button "Start Challenge" [ref=e34] [cursor=pointer]
