@@ -24,23 +24,30 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Build all games
-        run: |
-          for game in 01-island-treasure 02-whack-a-mole 03-space-shooter 04-tower-defense; do
-            echo "Building $game..."
-            cd $game
-            npm ci
-            npx vite build
-            cd ..
-          done
+      - name: Build 01-island-treasure
+        run: npm ci && npx vite build
+        working-directory: 01-island-treasure
+
+      - name: Build 02-whack-a-mole
+        run: npm ci && npx vite build
+        working-directory: 02-whack-a-mole
+
+      - name: Build 03-space-shooter
+        run: npm ci && npx vite build
+        working-directory: 03-space-shooter
+
+      - name: Build 04-tower-defense
+        run: npm ci && npx vite build
+        working-directory: 04-tower-defense
 
       - name: Prepare artifact structure
         run: |
           mkdir -p _site
-          for game in 01-island-treasure 02-whack-a-mole 03-space-shooter 04-tower-defense; do
-            short_name=$(echo $game | cut -d'-' -f2)
-            cp -r $game/dist _site/$short_name
-          done
+          cp -r 01-island-treasure/dist _site/island-treasure
+          cp -r 02-whack-a-mole/dist _site/whack-a-mole
+          cp -r 03-space-shooter/dist _site/space-shooter
+          cp -r 04-tower-defense/dist _site/tower-defense
+          ls -la _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:
