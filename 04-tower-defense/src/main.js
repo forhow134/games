@@ -944,33 +944,33 @@ function loadModels() {
 
   const modelsToLoad = [
     // 塔模型
-    { name: 'tower-arrow', path: '/models/tower-arrow.glb', fallback: createArrowTowerFallback },
-    { name: 'tower-magic', path: '/models/tower-magic.glb', fallback: createMagicTowerFallback },
-    { name: 'tower-cannon', path: '/models/tower-cannon.glb', fallback: createCannonTowerFallback },
-    { name: 'tower-ice', path: '/models/tower-ice.glb', fallback: createIceTowerFallback },
+    { name: 'tower-arrow', path: './models/tower-arrow.glb', fallback: createArrowTowerFallback },
+    { name: 'tower-magic', path: './models/tower-magic.glb', fallback: createMagicTowerFallback },
+    { name: 'tower-cannon', path: './models/tower-cannon.glb', fallback: createCannonTowerFallback },
+    { name: 'tower-ice', path: './models/tower-ice.glb', fallback: createIceTowerFallback },
     // 敌人模型
-    { name: 'enemy-goblin', path: '/models/enemy-goblin.glb', fallback: createGoblinFallback },
-    { name: 'enemy-orc', path: '/models/enemy-orc.glb', fallback: createOrcFallback },
-    { name: 'enemy-troll', path: '/models/enemy-troll.glb', fallback: createTrollFallback },
-    { name: 'enemy-boss', path: '/models/enemy-boss.glb', fallback: createBossFallback },
-    { name: 'enemy-bat', path: '/models/enemy-bat.glb', fallback: createBatFallback },
-    { name: 'enemy-golem', path: '/models/enemy-golem.glb', fallback: createGolemFallback },
+    { name: 'enemy-goblin', path: './models/enemy-goblin.glb', fallback: createGoblinFallback },
+    { name: 'enemy-orc', path: './models/enemy-orc.glb', fallback: createOrcFallback },
+    { name: 'enemy-troll', path: './models/enemy-troll.glb', fallback: createTrollFallback },
+    { name: 'enemy-boss', path: './models/enemy-boss.glb', fallback: createBossFallback },
+    { name: 'enemy-bat', path: './models/enemy-bat.glb', fallback: createBatFallback },
+    { name: 'enemy-golem', path: './models/enemy-golem.glb', fallback: createGolemFallback },
     // 建筑与特效
-    { name: 'temple', path: '/models/temple.glb', fallback: createTempleFallback },
-    { name: 'portal', path: '/models/portal.glb', fallback: createPortalFallback },
+    { name: 'temple', path: './models/temple.glb', fallback: createTempleFallback },
+    { name: 'portal', path: './models/portal.glb', fallback: createPortalFallback },
     // 森林装饰
-    { name: 'tree-pine', path: '/models/tree-pine.glb', fallback: createTreeModelFallback },
-    { name: 'rock-forest', path: '/models/rock-forest.glb', fallback: createRockModelFallback },
+    { name: 'tree-pine', path: './models/tree-pine.glb', fallback: createTreeModelFallback },
+    { name: 'rock-forest', path: './models/rock-forest.glb', fallback: createRockModelFallback },
     // 洞穴装饰
-    { name: 'stalagmite', path: '/models/stalagmite.glb', fallback: createStalagmiteFallback },
-    { name: 'rock-cave', path: '/models/rock-cave.glb', fallback: createRockModelFallback },
-    { name: 'mushroom-cave', path: '/models/mushroom-cave.glb', fallback: createMushroomFallback },
+    { name: 'stalagmite', path: './models/stalagmite.glb', fallback: createStalagmiteFallback },
+    { name: 'rock-cave', path: './models/rock-cave.glb', fallback: createRockModelFallback },
+    { name: 'mushroom-cave', path: './models/mushroom-cave.glb', fallback: createMushroomFallback },
     // 火山装饰
-    { name: 'rock-lava', path: '/models/rock-lava.glb', fallback: createLavaRockFallback },
-    { name: 'volcano-small', path: '/models/volcano-small.glb', fallback: createVolcanoFallback },
+    { name: 'rock-lava', path: './models/rock-lava.glb', fallback: createLavaRockFallback },
+    { name: 'volcano-small', path: './models/volcano-small.glb', fallback: createVolcanoFallback },
     // 路径装饰模型
-    { name: 'path-straight', path: '/models/path-straight.glb', fallback: createPathStraightFallback },
-    { name: 'path-corner', path: '/models/path-corner.glb', fallback: createPathCornerFallback }
+    { name: 'path-straight', path: './models/path-straight.glb', fallback: createPathStraightFallback },
+    { name: 'path-corner', path: './models/path-corner.glb', fallback: createPathCornerFallback }
   ]
 
   // 跟踪加载进度，全部完成后重新渲染关卡预览（使用真实 GLB 模型）
