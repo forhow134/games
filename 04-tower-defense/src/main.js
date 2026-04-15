@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js'
 import { TOWER_TYPES, ENEMY_TYPES, WAVES, GAME_CONFIG, PATH_POINTS, DIFFICULTY_CONFIG, LEVEL_CONFIG, THEME_CONFIG, RANDOM_EVENTS } from './constants.js'
@@ -59,7 +60,13 @@ let tutorialOverlay = null
 
 // 模型模板
 const modelTemplates = {}
+
+// 配置 GLTFLoader 支持 Draco 压缩
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
+
 const gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
 
 // UI元素 - 延迟初始化
 let ui = {}

@@ -11,6 +11,7 @@
     "three": "^0.172.0"
   },
   "devDependencies": {
+    "gltf-pipeline": "^4.3.1",
     "vite": "^6.4.2"
   }
 }
