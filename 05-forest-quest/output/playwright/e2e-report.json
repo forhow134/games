@@ -1,0 +1,30 @@
+{
+  "date": "2026-05-04T20:26:16.380Z",
+  "bugs": [],
+  "observations": [
+    {
+      "level": 1,
+      "text": "maxVy=5.83, crystals=8, finalState=LEVEL_COMPLETE"
+    },
+    {
+      "level": 2,
+      "text": "mushroom x1=3.635 x2=4.705 delta=1.071"
+    },
+    {
+      "level": 3,
+      "text": "sprite dist1=0.93 dist2=2.76"
+    },
+    {
+      "level": 4,
+      "text": "bouncy vy=17.22 y=6.01"
+    },
+    {
+      "level": 5,
+      "text": "golem state=ACTIVE hp=2 pos=(10.0,1.0,5.0)"
+    },
+    {
+      "level": 6,
+      "text": "boss hp sequence=[7,6,5,4,3,2,1,0], phaseSwitched=true, maxRocks=1, finalState=DEAD"
+    }
+  ]
+}

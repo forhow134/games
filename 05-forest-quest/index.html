@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forest Quest</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="hud">
+    <div id="hud-hearts">
+      <span class="heart">❤️</span>
+      <span class="heart">❤️</span>
+      <span class="heart">❤️</span>
+    </div>
+    <div id="hud-crystals">💎 0/10</div>
+    <div id="hud-level">L1</div>
+    <div id="hud-boss" style="display:none">
+      <div class="boss-label" data-i18n="hud.boss">BOSS</div>
+      <div class="boss-bar"><div class="boss-fill"></div></div>
+    </div>
+    <button id="hud-reset-camera"
+            type="button"
+            title="Reset camera (C)"
+            data-i18n-title="hud.resetCameraTitle">📷</button>
+  </div>
+
+  <div id="overlay-root">
+    <!-- Title -->
+    <div class="overlay" id="overlay-title">
+      <div class="title-bg-decor"></div>
+      <div class="title-content">
+        <div class="title-logo">
+          <span class="title-icon">🦊</span>
+          <span class="title-name">Forest Quest</span>
+        </div>
+        <div class="title-tagline">A Fox's Magical Forest Adventure</div>
+        <div class="title-buttons">
+          <button class="btn primary btn-start" data-i18n="title.start">Start Adventure</button>
+          <button class="btn secondary btn-level-select" data-i18n="title.levelSelect">Select Level</button>
+          <button class="btn ghost btn-settings" data-i18n="title.settings" disabled>Settings</button>
+        </div>
+        <div class="title-hint">WASD 移动 · 空格跳跃 · 鼠标旋转视角 · 点击画面锁定鼠标</div>
+        <div class="title-lang">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="zh">中</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Select -->
+    <div class="overlay" id="overlay-level-select">
+      <div class="ls-title" data-i18n="levelSelect.title">Select Level</div>
+      <div class="level-grid"></div>
+      <button class="btn ghost btn-back" data-i18n="levelSelect.back">Back</button>
+    </div>
+
+    <!-- Pause -->
+    <div class="overlay" id="overlay-pause">
+      <div class="pause-dim"></div>
+      <div class="pause-content">
+        <div class="pause-title" data-i18n="pause.title">Paused</div>
+        <div class="pause-buttons">
+          <button class="btn primary btn-resume" data-i18n="pause.resume">Resume</button>
+          <button class="btn ghost btn-level-select" data-i18n="pause.levelSelect">Select Level</button>
+          <button class="btn ghost btn-menu" data-i18n="pause.menu">Main Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Complete -->
+    <div class="overlay" id="overlay-level-complete">
+      <div class="lc-title" data-i18n="result.complete">Level Complete!</div>
+      <div class="lc-level-name">--</div>
+      <div class="lc-stars-wrap">
+        <span class="lc-star" data-idx="0">★</span>
+        <span class="lc-star" data-idx="1">★</span>
+        <span class="lc-star" data-idx="2">★</span>
+      </div>
+      <div class="lc-all-clear" data-i18n="result.allClear">All Levels Cleared! Congratulations!</div>
+      <div class="lc-stats">
+        <div class="lc-stat-row">
+          <span class="label lc-time-label" data-i18n="result.time">Time</span>
+          <span class="value lc-time">--:--</span>
+        </div>
+        <div class="lc-stat-row">
+          <span class="label lc-best-time-label" data-i18n="result.bestTime">Best Time</span>
+          <span class="value lc-best-time">--:--</span>
+        </div>
+        <div class="lc-stat-row">
+          <span class="label lc-crystals-label" data-i18n="result.crystals">Crystals</span>
+          <span class="value lc-crystals">0 / 10</span>
+        </div>
+      </div>
+      <div class="lc-buttons">
+        <button class="btn primary btn-next" data-i18n="result.next">Next Level</button>
+        <button class="btn secondary btn-retry" data-i18n="result.retry">Retry</button>
+        <button class="btn ghost btn-back" data-i18n="result.back">Select Level</button>
+      </div>
+    </div>
+
+    <!-- Game Over -->
+    <div class="overlay" id="overlay-game-over">
+      <div class="go-title" data-i18n="gameOver.title">Game Over</div>
+      <div class="go-reason"></div>
+      <div class="go-buttons">
+        <button class="btn primary btn-retry" data-i18n="gameOver.retry">Retry</button>
+        <button class="btn ghost btn-back" data-i18n="gameOver.back">Select Level</button>
+        <button class="btn ghost btn-menu" data-i18n="gameOver.menu">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

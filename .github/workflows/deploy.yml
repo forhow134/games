@@ -40,6 +40,10 @@ jobs:
         run: npm ci && npx vite build
         working-directory: 04-tower-defense
 
+      - name: Build 05-forest-quest
+        run: npm ci && npx vite build
+        working-directory: 05-forest-quest
+
       - name: Prepare artifact structure
         run: |
           mkdir -p _site
@@ -47,6 +51,7 @@ jobs:
           cp -r 02-whack-a-mole/dist _site/whack-a-mole
           cp -r 03-space-shooter/dist _site/space-shooter
           cp -r 04-tower-defense/dist _site/tower-defense
+          cp -r 05-forest-quest/dist _site/forest-quest
           ls -la _site/
 
       - uses: actions/upload-pages-artifact@v3
