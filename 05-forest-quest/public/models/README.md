@@ -14,7 +14,7 @@
 
 ## Fallback 机制
 
-当某个 `.glb` 文件缺失或加载失败时，代码会读取 `../../assets-manifest.json` 中对应条目的 `fallback` 字段，用 Three.js primitive 几何拼出占位 Mesh：
+当某个 `.glb` 文件缺失或加载失败时，代码会读取 `../assets-manifest.json` 中对应条目的 `fallback` 字段，用 Three.js primitive 几何拼出占位 Mesh：
 
 - `box` / `sphere` / `cylinder` / `cone` → 单一几何
 - `composite` → 多 `parts` 组合，每个 part 可独立指定几何、尺寸、颜色和局部偏移
@@ -26,7 +26,7 @@
 ## 添加新模型流程
 
 1. 将生成好的 `.glb` 文件放入本目录。
-2. 打开 `games/05-forest-quest/assets-manifest.json`，确认对应 `name` / `file` 条目已存在。
+2. 打开 `games/05-forest-quest/public/assets-manifest.json`，确认对应 `name` / `file` 条目已存在。
 3. 若是全新资源，在 `assets` 数组中新增一条，填写 `name`、`file`、`category`、`size`、`fallback` 和 `notes`。
 
 ---
