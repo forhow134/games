@@ -18,7 +18,7 @@ const glbCache = new Map()
 async function getManifest() {
   if (manifestCache) return manifestCache
   if (manifestPromise) return manifestPromise
-  manifestPromise = fetch('/assets-manifest.json')
+  manifestPromise = fetch(import.meta.env.BASE_URL + 'assets-manifest.json')
     .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
     .then(data => { manifestCache = data; return data })
   return manifestPromise
@@ -87,7 +87,7 @@ function loadGLB(name, entry) {
       const loader = new GLTFLoader()
       loader.setDRACOLoader(dracoLoader)
       loader.load(
-        `/models/${entry.file}`,
+        import.meta.env.BASE_URL + 'models/' + entry.file,
         (gltf) => resolve({ scene: gltf.scene, animations: gltf.animations || [] }),
         undefined,
         (err) => {
